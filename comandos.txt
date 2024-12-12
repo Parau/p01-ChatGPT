@@ -1,0 +1,2 @@
+Para instalar não use npm (gera erro) e sim o yarn
+yarn add tailwindcss postcss autoprefixer

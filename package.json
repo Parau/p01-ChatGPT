@@ -2,6 +2,7 @@
   "name": "pesquisa",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://criatividade.digital/p01-ChatGPT/",
   "dependencies": {
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",

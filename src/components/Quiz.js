@@ -17,6 +17,17 @@ const questions = [
       'Sim, faço a pergunta no ChatGPT e depois procuro complementar no Google, se necessário.',
       'Acho que o ChatGPT faz buscas na internet automaticamente.'
     ],
+    ids: 
+    [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
     correctAnswer: 'NOT'
   },
   {
@@ -32,6 +43,17 @@ const questions = [
       'Acho que o ChatGPT não é bom para resumir textos mais complexos ou longos.',
       'Nunca tentei usar o ChatGPT para essa finalidade.',
       'Gosto de copiar e colar trechos específicos para que ele resuma apenas partes importantes.'
+    ],
+    ids: 
+    [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
     ],
     correctAnswer: 'NOT'
   }
@@ -52,6 +74,11 @@ function Quiz() {
     }
   };
 
+  const handleBack = () => {
+    if (currentQuestion>0)
+      setCurrentQuestion(currentQuestion - 1);
+  }
+
   const restartQuiz = () => {
     setCurrentQuestion(0);
     setUserAnswers([]);
@@ -67,6 +94,7 @@ function Quiz() {
       <Question
         question={questions[currentQuestion]}
         onAnswer={handleAnswer}
+        onBack={handleBack}
         currentQuestion={currentQuestion + 1}
         totalQuestions={questions.length}
       />

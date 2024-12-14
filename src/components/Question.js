@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import {consoleLogEscopo} from '../lib/debug';
 
 function Question({ question, onAnswer, onBack, currentQuestion, totalQuestions }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [textAnswer, setTextAnswer] = useState('');
 
   const handleOptionChange = (option, e) => {
-    const optionId = e.target.dataset.info; // Obtém o id da opção a partir de data-info
+    const optionId = Number(e.target.dataset.info); // Obtém o id da opção a partir de data-info
 
     if (question.type === 'single') {
       setSelectedOptions([optionId]);
@@ -15,12 +16,16 @@ function Question({ question, onAnswer, onBack, currentQuestion, totalQuestions 
         //alert(e.target.dataset.info);
       }
 
+      consoleLogEscopo('QUESTION', 'optionId:', optionId);
+      consoleLogEscopo('QUESTION','selectedOptions (antes):', selectedOptions);
       setSelectedOptions((prev) =>
-        prev.includes(option)
-          ? prev.filter((item) => item !== option)
-          : [...prev, option]
+        prev.includes(optionId)
+          ? prev.filter((item) => { return(item !== optionId); })
+          : [...prev, optionId]
       );
+      consoleLogEscopo('QUESTION','selectedOptions (depois):', selectedOptions);
     }
+    
   };
 
   const handleSubmit = (e) => {
@@ -61,13 +66,13 @@ function Question({ question, onAnswer, onBack, currentQuestion, totalQuestions 
               <label key={index} className="flex items-start space-x-2">
                 <input
                   type={question.type === 'single' ? 'radio' : 'checkbox'}
-                  data-info={question.ids[index]} 
-                  checked={selectedOptions.includes(option)}
-                  onChange={(e) => handleOptionChange(option, e)}
+                  data-info={option.id} 
+                  checked={selectedOptions.includes(option.id)}
+                  onChange={(e) => handleOptionChange(option.text, e)}
                   className="h-6 w-6 text-blue-600 border-gray-300 rounded flex-shrink-0"
                   required={question.type === 'single'}
                 />
-                <span className="text-gray-700 text-left">{option}</span>
+                <span className="text-gray-700 text-left">{option.text}</span>
               </label>
             ))}
           </div>

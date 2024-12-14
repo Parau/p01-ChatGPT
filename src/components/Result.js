@@ -1,10 +1,12 @@
 import React from 'react';
-
+import {consoleLogEscopo} from '../lib/debug';
 
 function mapAnswersToIds(userAnswers, questions) {
+
   return userAnswers.map((answer) => {
     for (const question of questions) {
       const optionIndex = question.options.indexOf(answer); // Busca o índice da resposta no array de opções
+
       if (optionIndex !== -1) {
         return { questionId: question.id, optionId: question.ids[optionIndex] }; // Retorna o ID da pergunta e o ID da opção
       }
@@ -14,17 +16,22 @@ function mapAnswersToIds(userAnswers, questions) {
 }
 
 function Result({ questions, userAnswers, onRestart }) {
+  consoleLogEscopo('RESULT', 'userAnswers:', userAnswers);
+  consoleLogEscopo('RESULT', 'questions:', questions);
+  
+  
+  
+    //APAGAR DEPOIS
     // Mapeia as respostas do usuário para os IDs correspondentes
     const answerMappings = mapAnswersToIds(userAnswers, questions);
 
-  const score = userAnswers.filter((answer, index) => {
+    const score = userAnswers.filter((answer, index) => {
     const question = questions[index];
-
 
     return Array.isArray(question.correctAnswer)
       ? question.correctAnswer.every((a) => answer.includes(a))
       : answer === question.correctAnswer;
-  }).length;
+    }).length;
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto">

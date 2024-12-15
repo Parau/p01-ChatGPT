@@ -6,7 +6,7 @@ import processandoVideo from '../animacao/media/videos/teste/400p15/Processando.
 let skillResult = 0; // Resultado das maior habilidade mapeada
 const skillLevel = [
   'Curioso',
-  'Iniciação',
+  'Iniciante',
   'Explorador',
   'Construtor',
   'Criador',

@@ -60,7 +60,7 @@ function Result({ questions, userAnswers, onRestart }) {
         <source src="/processando.mp4" type="video/mp4" />
         Seu navegador não suporta o elemento de vídeo.
       </video>
-      <img src="/processando.mp4" alt="Procssando" />
+      <img src="/data-processing.svg" alt="Processando" />
 
         <h3 className="text-lg mb-4 text-gray-700">Respostas Selecionadas:</h3>
         <ul className="text-gray-700 mb-4">

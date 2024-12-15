@@ -3,3 +3,10 @@ yarn add tailwindcss postcss autoprefixer
 
 Para deployment no github (está gerando na pasta docs)
 -> npm run deploy
+
+
+Para as animações em manim
+* conda activate openbb
+
+Para rodar o manim
+C:\ProgramData\miniconda3\python.exe -m manim -pql teste.py SquareToCircle

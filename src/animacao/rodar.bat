@@ -1,1 +1,1 @@
-C:\ProgramData\miniconda3\python.exe -m manim -pql teste.py Processando
+C:\ProgramData\miniconda3\python.exe -m manim -pql -r 400,400 teste.py Processando

@@ -40,4 +40,7 @@ class Processando(Scene):
         #self.wait(2)
         # Adiciona a animação de rotação
         self.play(Rotate(svg, angle=2 * PI))  # Gira o SVG duas vezes (2 * PI radianos)
+        self.play(ScaleInPlace(svg, scale_factor=2))
+        # Adiciona a animação de rotação
+        self.play(Rotate(svg, angle=2 * PI))  # Gira o SVG duas vezes (2 * PI radianos)
         self.wait(2)

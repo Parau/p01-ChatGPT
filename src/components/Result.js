@@ -1,6 +1,8 @@
 import React from 'react';
 import {consoleLogEscopo} from '../lib/debug';
 
+import processandoVideo from '../animacao/media/videos/teste/400p15/Processando.mp4'; // Importe o vídeo
+
 let skillResult = 0; // Resultado das maior habilidade mapeada
 const skillLevel = [
   'Curioso',
@@ -49,28 +51,29 @@ function Result({ questions, userAnswers, onRestart }) {
   
     return (
       <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">Resultado</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">
+          Resultado
+        </h2>
         <p className="text-lg mb-4 text-gray-700 text-center">
           {skillLevel[skillResult]}
         </p>
-      <p>
-        teste***
-      </p>
-      <video width="100%" autoPlay loop muted>
-        <source src="/processando.mp4" type="video/mp4" />
-        Seu navegador não suporta o elemento de vídeo.
-      </video>
-      <img src="/data-processing.svg" alt="Processando" />
+        <video width="100%" autoPlay loop muted>
+          <source src={processandoVideo} type="video/mp4" />
+          Seu navegador não suporta o elemento de vídeo.
+        </video>
 
         <h3 className="text-lg mb-4 text-gray-700">Respostas Selecionadas:</h3>
         <ul className="text-gray-700 mb-4">
-          {answerMappings.map(({ questionId, optionId, question, skill }, index) => (
-            <li key={index}>
-              Alternativa escolhida ID = {optionId || 'N/A'} - texto: {question || 'N/A'} - Skill: {skill || 'N/A'}
-            </li>
-          ))}
+          {answerMappings.map(
+            ({ questionId, optionId, question, skill }, index) => (
+              <li key={index}>
+                Alternativa escolhida ID = {optionId || "N/A"} - texto:{" "}
+                {question || "N/A"} - Skill: {skill || "N/A"}
+              </li>
+            )
+          )}
         </ul>
-  
+
         <button
           onClick={onRestart}
           className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300"

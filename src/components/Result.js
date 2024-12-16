@@ -5,13 +5,13 @@ import processandoVideo from '../animacao/media/videos/teste/400p15/Processando.
 
 let skillResult = 0; // Resultado das maior habilidade mapeada
 const skillLevel = [
-  'Curioso',
-  'Iniciante',
-  'Explorador',
-  'Construtor',
-  'Criador',
-  'Estrategista',
-  'Mestre'
+  { name: 'Curioso', max: 0, acumulado: 0 },
+  { name: 'Iniciante', max: 1, acumulado: 1 },
+  { name: 'Explorador', max: 3, acumulado: 4 },
+  { name: 'Construtor', max: 2, acumulado: 6 },
+  { name: 'Criador', max: 2, acumulado: 8 },
+  { name: 'Estrategista', max: 3, acumulado: 11 },
+  { name: 'Mestre', max: 1, acumulado: 12 }
 ];
 
 function mapAnswersToIds(userAnswers, questions) {
@@ -42,12 +42,26 @@ function Result({ questions, userAnswers, onRestart }) {
   const answerMappings = mapAnswersToIds(userAnswers, questions);
   consoleLogEscopo('RESULT', 'answerMappings:', answerMappings);
 
-  answerMappings.forEach(({ skill }, index) => {
-    if (skill > skillResult)  //guarda a maior habilidade mapeada
-      skillResult = skill;
-  });
+  //// Calcular o saldo de habilidades
+  // Inicializar o array skillCounts com zeros
+  const skillCounts = new Array(skillLevel.length).fill(0);
   
-  consoleLogEscopo('RESULT','Skill:', skillResult);
+  answerMappings.forEach(({ skill }) => {
+    let skillAbs = Math.abs(skill);
+    skillCounts[skillAbs] += skill > 0 ? 1 : -1;
+  });
+  consoleLogEscopo('RESULT','skillCounts:', skillCounts);
+  consoleLogEscopo('RESULT','skillLevel:', skillLevel);
+  
+  const skillAtingido = skillCounts.reduce((acc, val) => acc + val, 0);
+  consoleLogEscopo('RESULT','skillAtingido:', skillAtingido);
+
+  let i = 0;
+  skillResult = 0
+  while (i < skillLevel.length && skillAtingido >= skillLevel[i].acumulado) {
+    skillResult = i;
+    i++;
+  }
   
   // Estado para controlar a visibilidade do elemento
   const [showElement, setShowElement] = useState(false);
@@ -77,7 +91,7 @@ function Result({ questions, userAnswers, onRestart }) {
               Resultado
             </h2>
             <p className="text-lg mb-4 text-gray-700 text-center">
-              {skillLevel[skillResult]}
+              {skillLevel[skillResult].name}
             </p>
 
             <h3 className="text-lg mb-4 text-gray-700">

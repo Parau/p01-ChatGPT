@@ -1,15 +1,7 @@
 from manim import *
+import numpy as np
 
 config.background_color = WHITE
-
-class SquareToCircle(Scene):
-    def construct(self):
-        square = Square()  # Create a square
-        circle = Circle()  # Create a circle
-
-        self.play(Create(square))  # Show the square on screen
-        self.play(Transform(square, circle))  # Transform the square into a circle
-        self.play(FadeOut(square))  # Fade out the circle
 
 class DisplaySVG(Scene):
     def construct(self):

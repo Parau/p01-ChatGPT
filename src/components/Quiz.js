@@ -9,8 +9,8 @@ const questions = [
     question: 'Você utiliza o ChatGPT para realizar buscas na internet?',
     options: [
       { id: 1, text: 'O ChatGPT não tem este recurso.', skill: -1 },
-      { id: 2, text: 'Não, prefiro usar a pesquisa do Google.', skill: 2 },
-      { id: 3, text: 'Não, prefiro usar a pesquisa do Microsoft Bing.', skill: 2 },
+      { id: 2, text: 'Não, prefiro usar a pesquisa do Google ou Microsoft Bing.', skill: 2 },
+      //{ id: 3, text: 'Não, prefiro usar a pesquisa do Microsoft Bing.', skill: 2 },
       { id: 4, text: 'Sim, simplesmente escrevo o que quero pesquisar.', skill: -1 },
       { id: 5, text: 'Sim, uso o ChatGPT para perguntas gerais, mas sei que ele não tem acesso a informações atualizadas.', skill: 2 },
       { id: 6, text: 'Sim, ativo o modo de busca do ChatGPT antes de enviar a minha pergunta.', skill: 1 },

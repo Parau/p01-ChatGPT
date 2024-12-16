@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:E:/dev/p01-ChatGPT/src/animacao/media/videos/teste/200p15/partial_movie_files/NivelAnimacao/3421257271_999310465_223132457.mp4'
+file 'file:E:/dev/p01-ChatGPT/src/animacao/media/videos/teste/200p15/partial_movie_files/NivelAnimacao/405973492_3440006239_2864118911.mp4'
+file 'file:E:/dev/p01-ChatGPT/src/animacao/media/videos/teste/200p15/partial_movie_files/NivelAnimacao/405973492_4000010614_3489513223.mp4'
+file 'file:E:/dev/p01-ChatGPT/src/animacao/media/videos/teste/200p15/partial_movie_files/NivelAnimacao/405973492_3494816192_1436452379.mp4'
